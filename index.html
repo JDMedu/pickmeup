@@ -131,11 +131,11 @@
     <div class="hero">
       <p class="eyebrow">2027 안양권 고입</p>
       <h1>고등학교, 어디가?</h1>
-      <p class="lead">학교 정보를 살펴보고, 선배들 얼굴로 나와 닮은 학교도 찾아보세요.</p>
+      <p class="lead">학교 정보를 살펴보고, 나와 닮은 학교도 찾아보세요.</p>
     </div>
     <div class="menu">
       <a href="#info"><span class="icon" aria-hidden="true">🏫</span><strong>고등학교 정보보기</strong><span class="desc">성취도, 교육과정, 선배들 이야기까지 학교별로 모아 봤어요.</span><span class="go">보러 가기 ›</span></a>
-      <a href="#face"><span class="icon" aria-hidden="true">🔍</span><strong>관상으로 고등학교 확인해보기</strong><span class="desc">사진 한 장이면 나와 닮은 선배들이 다니는 학교를 알려 드려요.</span><span class="go">해 보기 ›</span></a>
+      <a href="#face"><span class="icon" aria-hidden="true">🔍</span><strong>관상으로 고등학교 확인해보기</strong><span class="desc">사진 한 장이면 관상으로 학교를 알려 드려요.</span><span class="go">해 보기 ›</span></a>
     </div>
   </section>
 
@@ -160,7 +160,7 @@
   <section id="face" hidden>
     <div id="face-form">
       <h2>관상으로 고등학교 확인해보기</h2>
-      <p class="lead">재원생 선배들의 얼굴 특징과 비교해 나와 닮은 학교를 찾아 드려요.</p>
+      <p class="lead">관상으로 학교를 찾아 드려요.</p>
       <form id="form" novalidate>
         <div class="card">
           <h3 class="step"><b>1</b>성별</h3>
@@ -326,8 +326,8 @@ function showResult(values, sex, region) {
       <div class="rank">${cls === 'out' ? '권외 추천' : `${rank + 1}지망`}</div>
       <div><div class="name">${s.name}</div><div class="region">${REGIONS[s.region]}</div></div></div>`;
   $('results').innerHTML = inside.map((s, i) => card(s, i, i ? '' : 'first')).join('') + (outside ? card(outside, 3, 'out') : '');
-  $('result-sub').textContent = `${REGIONS[region]}에서 나와 가장 닮은 선배들이 다니는 학교예요.` +
-    (inside.length < 3 ? ' 아직 선배 사진이 부족한 학교는 빠졌어요.' : '');
+  $('result-sub').textContent = `${REGIONS[region]}에서 나와 가장 닮은 학교예요.` +
+    (inside.length < 3 ? ' 사진이 부족한 학교는 빠졌어요.' : '');
   $('face-form').hidden = true; $('face-result').hidden = false; scrollTo(0, 0);
 }
 $('again').addEventListener('click', () => { $('face-form').hidden = false; $('face-result').hidden = true; scrollTo(0, 0); });
