@@ -318,7 +318,8 @@ form.addEventListener('submit', async e => {
 function showResult(values, sex, region) {
   const u = DATA.features.map(k => (values[k] - DATA.mean[k]) / DATA.sd[k]);
   const ranked = DATA.schools.filter(s => s.profile[sex] && s.profile[sex].z)
-    .map(s => ({ ...s, score: cosine(u, s.profile[sex].z) })).sort((a, b) => b.score - a.score);
+    // bonus: schools.json에 적힌 가산점, 1지역군을 고른 학생에게만 적용
+    .map(s => ({ ...s, score: cosine(u, s.profile[sex].z) + (region === '1' ? s.bonus || 0 : 0) })).sort((a, b) => b.score - a.score);
   const inside = ranked.filter(s => s.region === region).slice(0, 3);
   const outside = ranked.find(s => s.region !== region);
   const card = (s, rank, cls) => `<div class="result ${cls}" style="animation-delay:${cls === 'out' ? 0.45 : rank * 0.15}s">
